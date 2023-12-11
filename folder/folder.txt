@@ -1,0 +1,39 @@
+from collections import defaultdict
+
+def reconcile_expenses(transactions):
+    balances = defaultdict(int)
+
+    for transaction in transactions:
+        if transaction[0] == 'E':
+            # Expense settlement
+            payer, amount, *recipients = transaction.split('/')[1:]
+            amount = int(amount)
+            share = amount // len(recipients)
+
+            for recipient in recipients:
+                balances[payer] -= share
+                balances[recipient] += share
+        elif transaction[0] == 'L':
+            # Loan repayment
+            lender, borrower, amount = transaction.split('/')[1:]
+            amount = int(amount[1:])
+            balances[lender] += amount
+            balances[borrower] -= amount
+
+    return balances
+
+def main():
+    n = int(input())
+    transactions = [input().strip() for _ in range(n)]
+
+    balances = reconcile_expenses(transactions)
+
+    for key in sorted(balances.keys()):
+        if balances[key] != 0:
+            print(f"{key}/{max('', '', key=abs)}/{abs(balances[key])}")
+
+    if all(balance == 0 for balance in balances.values()):
+        print("NO DUES.")
+
+if _name_ == "_main_":
+    main()

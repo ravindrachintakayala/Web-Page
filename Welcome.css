@@ -1,0 +1,43 @@
+.{
+    margin: 0%;
+    padding: 0%;
+
+}
+video{
+    width: 1800px;
+}
+
+
+
+
+
+
+
+.container1{
+    background-color: rgba(255, 192, 203, 0.237);
+    display: flex;
+}
+.container1 img{
+    width: 200px;
+    height: 250px;
+    margin: 2%;
+  
+
+}
+.container1 .title{
+    padding: 10% 25%;
+}
+.container2{
+    background-color: rgba(255, 192, 203, 0.377);
+    display: flex;
+}
+.container2 img{
+    width: 200px;
+    height: 250px;
+    margin: 2%;
+  
+
+}
+.container2 .title{
+    padding: 10% 20%;
+}
